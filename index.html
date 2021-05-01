@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Utill</title>
-    </head>
-    <body>
-        <a href="/meplication/Recipe/">전문기술 재료 아이템 계산기</a>
-        <br>
-        <a href="/meplication/nyehuing/">녜힁 닉네임 생성여부 확인</a>
-        <br>
-    </body>
+
+<head>
+    <title>Utill</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <a href="/meplication/Recipe/">전문기술 재료 아이템 계산기</a>
+    <br>
+    <a href="/meplication/nyehuing/">녜힁 닉네임 생성여부 확인</a>
+    <br>
+    <script>
+        $(document).ready(function () {
+            $('header').load('/meplication/include/header.html');
+        });
+    </script>
+</body>
+
 </html>
