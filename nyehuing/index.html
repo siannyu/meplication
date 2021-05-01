@@ -2,6 +2,7 @@
 <html>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="./js/jquery.ajax-cross-origin.min.js"></script>
 <h2>★랜덤 녜힁 제조기★</h2>
 
 <pre id="demo" style="font-size: 16px;">여기에 녜힁 출력</pre>
@@ -34,11 +35,15 @@ function bulkNyehuing(amount, length) {
 
 function mapleParser() {
   $.ajax({
-    type : "GET",
+    crossOrigin : true,
+    // type : "GET",
     url : "https://maplestory.nexon.com/Ranking/World/Total?c=%EC%95%84%EB%AF%B8%EC%B8%A0",
     dataType : "html",
     success : function(html) {
       console.log('success');
+    },
+    error : function(html) {
+      console.log('err');
     }
   });
 }
