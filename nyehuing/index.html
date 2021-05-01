@@ -3,7 +3,7 @@
 
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <h2>★랜덤 녜힁 제조기★</h2>
+  <h2 style="color: pink;">기능이 강화된</h2><h2>★랜덤 녜힁 제조기★</h2>
 
   <pre id="demo" style="font-size: 16px;">여기에 녜힁 출력</pre>
 
@@ -16,6 +16,7 @@
       for (let i = 1; i <= length; i++) {
         name += names[Math.floor(Math.random() * 2350)];
       }
+      name = nameCheck(name);
       return name;
     }
 
@@ -24,7 +25,6 @@
 
       for (let i = 1; i <= amount; i++) {
         name += MakeNyehuing(length) + ' ';
-        mapleParser();
 
         if (i % 10 == 0) {
           name += '\n';
@@ -34,17 +34,26 @@
     }
 
     var corsProxy = 'https://cors-anywhere.herokuapp.com/'
-    function mapleParser() {
+    function nameCheck(name) {
+      var data;
+
       $.ajax({
         url: corsProxy + "https://maplestory.nexon.com/Ranking/World/Total?c=%EC%95%84%EB%AF%B8%EC%B8%A0",
         dataType : "html",
+        async : false,
         success: function (res) {
-          console.log('success');
+          if($(res).find('#container > div > div > div:nth-child(4) > div.rank_table_wrap > table > tbody > tr.search_com_chk').length) {
+            data = name + '<font color="red"> (불가능)</font>';
+          } else {
+            data = name + '<font color="green"> (가능)</font>';
+          }
         },
         error: function (res) {
           console.log('err');
         }
       });
+
+      return data;
     }
   </script>
 
