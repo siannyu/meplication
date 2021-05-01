@@ -38,7 +38,7 @@
       var data;
 
       $.ajax({
-        url: corsProxy + "https://maplestory.nexon.com/Ranking/World/Total?c=%EC%95%84%EB%AF%B8%EC%B8%A0",
+        url: corsProxy + "https://maplestory.nexon.com/Ranking/World/Total?c=" + name,
         dataType : "html",
         async : false,
         success: function (res) {
