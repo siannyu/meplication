@@ -18,13 +18,883 @@
 <body>
     <header w3-include-html="/meplication/include/header.html"></header>
     <main>
-        hello World!
+        <div class="container">
+            <div class="title">
+                <h2><b>전문기술 재료 아이템 계산기</b></h2>
+                토드용 아이템을 제작할때 필요한 재료를 계산하는 곳입니다.
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="10%">
+                            <col width="30%">
+                            <col width="40%">
+                        </colgroup>
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col">선택</th>
+                                <th scope="col">Lv.</th>
+                                <th scope="col">필요 부위 및 개수</th>
+                                <th scope="col">재료개수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 40제 시작 -->
+                            <tr data-level="40">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">40</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/40-1.png" alt="은"></td>
+                                                <td>은</td>
+                                                <td rowspan="3" class="material-cnt" data-cnt="0" style="border-bottom: 1px solid">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr style="border-bottom: 1px solid;">
+                                                <td class="padding-btm"><img src="/Asset/40-2.png" alt="오팔"></td>
+                                                <td class="padding-btm">오팔</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Basic Abrasive.png  " alt="하급 연마제"></td>
+                                                <td class="padding-v">하급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 40제 끝 -->
+                            <!-- 50제 시작 -->
+                            <tr data-level="50">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">50</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/50-1.png" alt="자수정"></td>
+                                                <td>자수정</td>
+                                                <td rowspan="3" class="material-cnt border-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/50-2.png" alt="오리할콘"></td>
+                                                <td class="padding-btm">오리할콘</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Basic Abrasive.png  " alt="하급 연마제"></td>
+                                                <td class="padding-v">하급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Basic Item Crystal.png  " alt="하급 아이템 결정"></td>
+                                                <td class="padding-v">하급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 50제 끝 -->
+                            <!-- 60제 시작 -->
+                            <tr data-level="60">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">60</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/60-1.png" alt="강철"></td>
+                                                <td>강철</td>
+                                                <td rowspan="3" class="material-cnt border-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/60-2.png" alt="사파이어"></td>
+                                                <td class="padding-btm">사파이어</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Basic Abrasive.png  " alt="하급 연마제"></td>
+                                                <td class="padding-v">하급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Basic Item Crystal.png  " alt="하급 아이템 결정"></td>
+                                                <td class="padding-v">하급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 60제 끝 -->
+                            <!-- 70제 시작 -->
+                            <tr data-level="70">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">70</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/70-1.png" alt="청동"></td>
+                                                <td>청동</td>
+                                                <td rowspan="3" class="material-cnt border-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/70-2.png" alt="아다만티움"></td>
+                                                <td class="padding-btm">아다만티움</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Intermediate Abrasive.png  " alt="중급 연마제"></td>
+                                                <td class="padding-v">중급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Intermediate Item Crystal.png  " alt="중급 아이템 결정"></td>
+                                                <td class="padding-v">중급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 70제 끝 -->
+                            <!-- 80제 시작 -->
+                            <tr data-level="80">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">80</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/80-1.png" alt="미스릴"></td>
+                                                <td>미스릴</td>
+                                                <td rowspan="3" class="material-cnt border-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/80-2.png" alt="민첩성의 크리스탈"></td>
+                                                <td class="padding-btm">민첩성의 크리스탈</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Intermediate Abrasive.png  " alt="중급 연마제"></td>
+                                                <td class="padding-v">중급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Intermediate Item Crystal.png  " alt="중급 아이템 결정"></td>
+                                                <td class="padding-v">중급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 80제 끝 -->
+                            <!-- 90제 시작 -->
+                            <tr data-level="90">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">90</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/90-1.png" alt="금"></td>
+                                                <td>금</td>
+                                                <td rowspan="3" class="material-cnt border-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/90-2.png" alt="토파즈"></td>
+                                                <td class="padding-btm">토파즈</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Intermediate Abrasive.png  " alt="중급 연마제"></td>
+                                                <td class="padding-v">중급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Intermediate Item Crystal.png  " alt="중급 아이템 결정"></td>
+                                                <td class="padding-v">중급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 90제 끝 -->
+                            <!-- 100제 시작 -->
+                            <tr data-level="100">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">100</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/100-1.png" alt="다이아몬드"></td>
+                                                <td>다이아몬드</td>
+                                                <td rowspan="3" class="material-cnt border-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/100-2.png" alt="아쿠아마린"></td>
+                                                <td class="padding-btm">아쿠아마린</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Advanced Abrasive.png  " alt="상급 연마제"></td>
+                                                <td class="padding-v">상급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Advanced Item Crystal.png  " alt="상급 아이템 결정"></td>
+                                                <td class="padding-v">상급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 100제 끝 -->
+                            <!-- 110제 시작 -->
+                            <tr data-level="110">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">110</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/110-1.png" alt="가넷"></td>
+                                                <td class="padding-btm">가넷</td>
+                                                <td class="material-cnt border-btm padding-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Advanced Abrasive.png  " alt="상급 연마제"></td>
+                                                <td class="padding-v">상급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Advanced Item Crystal.png  " alt="상급 아이템 결정"></td>
+                                                <td class="padding-v">상급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 110제 끝 -->
+                            <!-- 120제 시작 -->
+                            <tr data-level="120">
+                                <td class="align-middle text-center">
+                                    <input class="form-check-input select-level" type="checkbox">
+                                </td>
+                                <td class="align-middle text-center">120</td>
+                                <td class="align-middle text-center">
+                                    <div data-part="Hats">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 모자
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Tops">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 상의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Pants">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 하의
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Overalls">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 한벌
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Shoes">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 신발
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Gloves">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 장갑
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                    <div data-part="Weapon">
+                                        <input class="form-check-input select-recipe" type="checkbox" disabled> 무기
+                                        <input class="input-cnt" type="number" min="0" placeholder="개수 입력" disabled
+                                            data-val="0">
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <table class="material-table" style="margin: auto;">
+                                        <colgroup>
+                                            <col width="35px">
+                                            <col width="150px">
+                                            <col width="50px">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Asset/120-1.png" alt="흑수정"></td>
+                                                <td>흑수정</td>
+                                                <td rowspan="3" class="material-cnt border-btm" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">or</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-btm"><img src="/Asset/120-2.png" alt="어둠의 크리스탈"></td>
+                                                <td class="padding-btm">어둠의 크리스탈</td>
+                                            </tr>
+                                            <tr class="border-btm">
+                                                <td class="padding-v"><img src="/Asset/Advanced Abrasive.png  " alt="상급 연마제"></td>
+                                                <td class="padding-v">상급 연마제</td>
+                                                <td class="abrasive-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="padding-v"><img src="/Asset/Advanced Item Crystal.png  " alt="상급 아이템 결정"></td>
+                                                <td class="padding-v">상급 아이템 결정</td>
+                                                <td class="crystal-cnt padding-v" data-cnt="0">0개</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <!-- 120제 끝 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
+        var material = {
+            Silver: 0, Opal: 0, Amethyst: 0, OrihalconPlate: 0, SteelPlate: 0, Sapphire: 0, BronzePlate: 0, AdamantiumPlate: 0, MithrilPlate: 0, DEXCrystal: 0, Gold: 0,
+            Topaz: 0, Diamond: 0, AquaMarine: 0, Garnet: 0, BlackCrystal: 0, DarkCrystal: 0, BasicItemCrystal: 0, IntermediateItemCrystal: 0, AdvancedItemCrystal: 0,
+            BasicAbrasive: 0, IntermediateAbrasive: 0, AdvancedAbrasive: 0
+        }
+
         // includeHTML
         w3.includeHTML();
+
+        // 방어구 50제 부터 결정 포함 / 무기 80제 부터 결정 포함
+        // 모자 : 4 1 4 / 상의 : 5 1 4 / 하의 : 5 1 4 / 한벌 (40제 2 10) 10 2 4 / 신발 2 1 2 / 장갑 4 1 4 / 무기 10 3 8
+
+        // 재료계산
+        $('.input-cnt').change(function () {
+            var trObj = $(this).parents('tr').children('td')[3],
+                lv = $(this).parents('tr').data()['level'],
+                pre = $(this).data('val'),
+                cur = $(this).val();
+            let materialSum = $(trObj).find('.material-cnt').data()['cnt'],
+                abrasiveSum = $(trObj).find('.abrasive-cnt').data()['cnt'],
+                crystalSum = $(trObj).find('.crystal-cnt').data()['cnt'];
+
+            switch ($(this).parent().data()['part']) {
+                case 'Hats':
+                    materialCnt = 4 * (cur - pre);
+                    abrasiveCnt = 1 * (cur - pre);
+                    if (lv > 40) {
+                        crystalCnt = 4 * (cur - pre);
+                    }
+                    break;
+
+                case 'Tops':
+                    materialCnt = 5 * (cur - pre);
+                    abrasiveCnt = 1 * (cur - pre);
+                    if (lv > 40) {
+                        crystalCnt = 4 * (cur - pre);
+                    }
+                    break;
+
+                case 'Pants':
+                    materialCnt = 5 * (cur - pre);
+                    abrasiveCnt = 1 * (cur - pre);
+                    if (lv > 40) {
+                        crystalCnt = 4 * (cur - pre);
+                    }
+                    break;
+
+                case 'Overalls':
+                    if (lv < 50) {
+                        materialCnt = 2 * (cur - pre);
+                    } else {
+                        materialCnt = 10 * (cur - pre);
+                    }
+                    if (lv < 50) {
+                        abrasiveCnt = 10 * (cur - pre);
+                    } else {
+                        abrasiveCnt = 2 * (cur - pre);
+                    }
+                    if (lv > 40) {
+                        crystalCnt = 4 * (cur - pre);
+                    }
+                    break;
+
+                case 'Shoes':
+                    materialCnt = 2 * (cur - pre);
+                    abrasiveCnt = 1 * (cur - pre);
+                    if (lv > 40) {
+                        crystalCnt = 2 * (cur - pre);
+                    }
+                    break;
+
+                case 'Gloves':
+                    materialCnt = 4 * (cur - pre);
+                    abrasiveCnt = 1 * (cur - pre);
+                    if (lv > 40) {
+                        crystalCnt = 4 * (cur - pre);
+                    }
+                    break;
+
+                case 'Weapon':
+                    materialCnt = 10 * (cur - pre);
+                    abrasiveCnt = 3 * (cur - pre);
+                    if (lv > 70) {
+                        crystalCnt = 8 * (cur - pre);
+                    }
+                    break;
+            }
+
+            materialSum += materialCnt;
+            $(trObj).find('.material-cnt').data('cnt', materialSum);
+            abrasiveSum += abrasiveCnt;
+            $(trObj).find('.abrasive-cnt').data('cnt', abrasiveSum);
+            crystalSum += crystalCnt;
+            $(trObj).find('.crystal-cnt').data('cnt', crystalSum);
+
+            // 광물
+            $(trObj).find('.material-cnt').text(materialSum + '개');
+            // 연마제
+            $(trObj).find('.abrasive-cnt').text(abrasiveSum + '개');
+            // 결정
+            $(trObj).find('.crystal-cnt').text(abrasiveSum + '개');
+
+            $(this).data('val', cur);
+        });
+
+        // 해당 레벨 선택
+        $('.select-level').click(function () {
+            var trObj = $(this).parents('tr').children('td')[2];
+
+            if ($(this).prop('checked') == true) {
+                $(this).parents('tr').addClass('table-active');
+                $(trObj).find('.select-recipe').removeAttr('disabled');
+            } else {
+                $(this).parents('tr').removeClass('table-active');
+                $(trObj).find('.input-cnt').attr('disabled', '')
+                $(trObj).find('.input-cnt').val('');
+                $(trObj).find('.select-recipe').attr('disabled', '');
+                $(trObj).find('.select-recipe').prop('checked', false);
+                $($(this).parents('tr').children('td')[3]).find('.material-cnt').text('0개');
+                $($(this).parents('tr').children('td')[3]).find('.abrasive-cnt').text('0개');
+
+            }
+        });
+
+        // 부위별 선택
+        $('.select-recipe').click(function () {
+            var trObj = $(this).parent();
+
+            if ($(this).prop('checked') == true) {
+                $(trObj).find('.input-cnt').removeAttr('disabled');
+            } else {
+                $(trObj).find('.input-cnt').attr('disabled', '');
+                $(trObj).find('.input-cnt').val('');
+            }
+        })
     </script>
+
+    <style>
+        .table {
+            --bs-table-active-bg: rgb(231 139 51 / 20%)
+        }
+        .input-cnt {
+            height: 18px;
+        }
+        .padding-btm {
+            padding-bottom: 7px;
+        }
+        .padding-v {
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+        .border-btm {
+            border-bottom: 1px solid;
+        }
+    </style>
 </body>
 
 </html>
