@@ -805,13 +805,17 @@
             var trObj = $(this).parents('tr').children('td')[3],
                 lv = $(this).parents('tr').data()['level'],
                 pre = $(this).data('val'),
-                cur = $(this).val();
-            let materialSum = $(trObj).find('.material-cnt').data()['cnt'],
-                abrasiveSum = $(trObj).find('.abrasive-cnt').data()['cnt'];
-            if (lv > 40) {
-                let crystalSum = $(trObj).find('.crystal-cnt').data()['cnt'];
-            }
+                cur = $(this).val(),
+                materialSum = $(trObj).find('.material-cnt').data('cnt'),
+                abrasiveSum = $(trObj).find('.abrasive-cnt').data('cnt'),
+                crystalSum = 0,
+                materialCnt = 0,
+                abrasiveCnt = 0,
+                crystalCnt = 0;
 
+            if (lv > 40) {
+                crystalSum = $(trObj).find('.crystal-cnt').data('cnt');
+            }
             switch ($(this).parent().data()['part']) {
                 case 'Hats':
                     materialCnt = 4 * (cur - pre);
@@ -891,9 +895,10 @@
             $(trObj).find('.material-cnt').text(materialSum + '개');
             // 연마제
             $(trObj).find('.abrasive-cnt').text(abrasiveSum + '개');
+            
             if (lv > 40) {
                 // 결정
-                $(trObj).find('.crystal-cnt').text(abrasiveSum + '개');
+                $(trObj).find('.crystal-cnt').text(crystalSum + '개');
             }
 
             $(this).data('val', cur);
