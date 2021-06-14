@@ -83,8 +83,7 @@
                 source: function (request, response) {
                     $.ajax({
                         type: "get",
-                        // url: "/meplication/json/ItemList.json",
-                        url: "https://siannyu.github.io/meplication/json/ItemList.json",    // 로컬테스트
+                        url: "/meplication/json/ItemList.json",
                         dataType: "json",
                         success: function (data) {
                             response(
