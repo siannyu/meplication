@@ -68,12 +68,6 @@
     </main>
     <script>
         $(function () {
-            var availableTags = [
-                "서울",
-                "대구",
-                "부산"
-            ];
-
             // datepicker
             $("#datepicker").datepicker({
                 changeMonth: true,
@@ -89,29 +83,24 @@
                 source: function (request, response) {
                     $.ajax({
                         type: "get",
-                        url: "/meplication/json/ItemList.json",
+                        // url: "/meplication/json/ItemList.json",
+                        url: "https://siannyu.github.io/meplication/json/ItemList.json",    // 로컬테스트
                         dataType: "json",
-                        data: {
-                            term: request.term
-                        },
                         success: function (data) {
-                            console.log("data : " + data);
-                            console.log("data k : " + data.key);
-                            console.log("data v : " + data.value);
                             response(
                                 $.map(data, function (item) {
-
-                                    console.log(item);
-                                    return {
-                                        label: item,
-                                        value: item
-                                    };
+                                    if (item.indexOf(request.term) >= 0) {
+                                        return {
+                                            label: item,
+                                            value: item
+                                        };
+                                    }
                                 })
                             );
                         }
                     });
                 },
-                minLength: 2,
+                minLength: 1,
                 focus: function (event, ui) {
                     return false;
                 }
@@ -125,16 +114,23 @@
             var hour = parseInt(dateTime / 100),
                 min = parseInt(dateTime % 100);
 
-            if (min == 0) min = '00';
-            if (hour == 0) hour = '00';
+            if (hour < 10) hour = String(hour).padStart(2, '0');
+            if (min < 10) min = String(min).padStart(2, '0');
 
-            if (parseInt(hour) < 12) {
-                $('#D-day').val(hour + ' : ' + min + ' AM');
-            } else if (parseInt(hour) > 24) {
+            if (parseInt(min) < 60) {
+                if (parseInt(hour) < 12) {
+                    $('#D-day').val(hour + ' : ' + min + ' AM');
+                } else if (parseInt(hour) >= 24) {
+                    alert('올바르지 않는 값입니다.');
+                    $('#D-day').val('');
+                } else if (parseInt(hour) == 12) {
+                    $('#D-day').val(hour + ' : ' + min + ' PM');
+                } else {
+                    $('#D-day').val(hour % 12 + ' : ' + min + ' PM');
+                }
+            } else {
                 alert('올바르지 않는 값입니다.');
                 $('#D-day').val('');
-            } else {
-                $('#D-day').val(hour % 12 + ' : ' + min + ' PM');
             }
         });
 
@@ -169,8 +165,9 @@
                     <div class="remaindTime">남은시간 : </div>
                 </div>
                 `
-            var stcode;
+            var stcode= '';
 
+            stcode += '<div>';
             stcode += '<div>';
             stcode += $('#itemName').val();
             stcode += '</div>';
@@ -180,13 +177,12 @@
             stcode += '<div>';
             stcode += '남은시간 : ' + remaindTime();
             stcode += '</div>';
+            stcode += '</div>';
 
             $('#itemList').append(stcode);
             console.log('success');
+            console.log(stcode);
         });
-
-        // includeHTML
-        // w3.includeHTML();
 
         // includeHTML
         $('header').load('/meplication/include/header.html')
