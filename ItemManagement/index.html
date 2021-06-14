@@ -94,6 +94,7 @@
                         success: function(data) {
                             response(
                                 $.map(data, function(item) {
+                                    console.log("data : " + data);
                                     console.log(item);
                                     return {
                                         label: item,
