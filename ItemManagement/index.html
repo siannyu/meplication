@@ -90,7 +90,7 @@
                     $.ajax({
                         type: "get",
                         url: "/meplication/json/ItemList.json",
-                        data: "json",
+                        dataType: "json",
                         success: function(data) {
                             response(
                                 $.map(data, function(item) {
@@ -104,6 +104,7 @@
                         }
                     });
                 },
+                minLength: 2,
                 focus: function (event, ui) {
                     return false;
                 }
