@@ -91,7 +91,7 @@
                         type: "get",
                         url: "/meplication/json/ItemList.json",
                         data: "json",
-                        success: function(res) {
+                        success: function(data) {
                             response(
                                 $.map(data, function(item) {
                                     return {
