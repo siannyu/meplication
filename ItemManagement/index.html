@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-    <!-- momentjs -->
+    <!-- momentjs cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -32,40 +32,28 @@
             <div class="row">
                 <div class="ui-widget col-xs-12">
                     <label for="itemName">아이템 이름 : </label>
-                    <input id="itemName">
+                    <input type="text" id="itemName">
                 </div>
                 <div class="col-xs-4">
                     <label for="datepicker">날짜 선택 : </label>
                     <input type="text" id="datepicker">
                 </div>
                 <div class="col-xs-4">
-                    <label for="D-day">시간 입력 : </label>
-                    <input type="text" id="D-day" placeholder="ex) 1330">
-                </div>
-                <div>
-                    <div class="remaindTime">남은시간 : </div>
+                    <label for="time">시간 입력 : </label>
+                    <input type="text" id="time" placeholder="ex) 1330">
                 </div>
             </div>
             <div class="text-center">
-                <button id="add">+</button>
+                <button id="btn_add">+</button>
             </div>
         </div>
         <hr>
         <div class="container">
             <div class="row" id="itemList">
-                <div>
-                    아이템 이름
-                </div>
-                <div>
-                    20201 / 06 / 12 12:32 PM
-                </div>
-                <div>
-                    남은시간 : 3일 12시간 29분
-                </div>
             </div>
         </div>
-        <button id="testBtn">test</button>
     </main>
+
     <script>
         $(function () {
             // datepicker
@@ -104,13 +92,49 @@
                     return false;
                 }
             });
+
+            // localStorge값 불러오기
+            if (localStorage.getItem('item') != null) {
+                let parsedList = JSON.parse(localStorage.getItem('item'));
+                for (let i = 0; i < parsedList.length; i++) {
+                    let itemName = parsedList[i]['itemName'],
+                        dday = parsedList[i]['dday'];
+
+                    let itemSource = `
+                    <div data-idx="${i}">
+                        <div>
+                            ${itemName}
+                        </div>
+                        <div>
+                            만료기간 :
+                            <span class="availableDate">
+                                ${transfromDate(dday)}
+                            </span>
+                        </div>
+                        <div>
+                            남은시간 : 
+                            <span class="remaindDate">
+                            </span>
+                        </div>
+                        <button type="button" class="btn_delete">X</button>
+                    </div>
+                    `
+                    $('#itemList').append(itemSource);
+
+                }
+            } else {
+                localStorage.setItem('item', '[]');
+                localStorage.setItem('lastIdx', '0');
+            }
+
+            // 남은시간계산 함수 주기생성
+            setInterval(liveUpdate, 1000);
         });
 
         // 입력 숫자 시간 자동 변경
-        $("#D-day").change(function () {
-            console.log('data is changed');
-            let dateTime = parseInt($("#D-day").val());
-            var hour = parseInt(dateTime / 100),
+        $("#time").change(function () {
+            let dateTime = parseInt($("#time").val());
+            let hour = parseInt(dateTime / 100),
                 min = parseInt(dateTime % 100);
 
             if (hour < 10) hour = String(hour).padStart(2, '0');
@@ -118,97 +142,148 @@
 
             if (parseInt(min) < 60) {
                 if (parseInt(hour) < 12) {
-                    $('#D-day').val(hour + ' : ' + min + ' AM');
+                    $('#time').val(hour + ' : ' + min + ' AM');
                 } else if (parseInt(hour) >= 24) {
                     alert('올바르지 않는 값입니다.');
-                    $('#D-day').val('');
+                    $('#time').val('');
                 } else if (parseInt(hour) == 12) {
-                    $('#D-day').val(hour + ' : ' + min + ' PM');
+                    $('#time').val(hour + ' : ' + min + ' PM');
                 } else {
-                    $('#D-day').val(hour % 12 + ' : ' + min + ' PM');
+                    hour %= 12;
+                    hour = String(hour).padStart(2, '0');
+                    $('#time').val(hour + ' : ' + min + ' PM');
                 }
             } else {
                 alert('올바르지 않는 값입니다.');
-                $('#D-day').val('');
+                $('#time').val('');
             }
         });
 
         // 남은시간 계산
-        function remaindTime() {
-            var now = new Date(),
-                end = new Date(2021, 5, 11, 0, 0);
+        function remaindTime(end) {
+            let now = new Date();
 
-            var remaindMilli = end.getTime() - now.getTime();
+            let remaindMSec = end.getTime() - now.getTime();
 
-            var remaindSec = Math.ceil(remaindMilli / 1000);
-            var remaindMin = Math.ceil((remaindSec / 60) % 60),
-                remaindHour = Math.ceil(remaindSec / 60 / 60);
+            let remaind = Math.floor(remaindMSec / 1000);
+            let remaindSec = Math.floor(remaind % 60),
+                remaindMin = Math.floor(remaind / 60 % 60),
+                remaindHour = Math.floor(remaind / 60 / 60 % 24),
+                remaindDay = Math.floor(remaind / 60 / 60 / 24);
 
-            return ('0일 ' + remaindHour + '시간 ' + remaindMin + '분');
+            return (remaindDay + '일 ' + remaindHour + '시간 ' + remaindMin + '분' + remaindSec + '초');
         }
-        // setInterval(remaindTime, 1000);
+
+        // 날짜, 시간 분리
+        function splitDate(obj) {
+            return {
+                year: obj.substr(0, 4),
+                month: obj.substr(4, 2),
+                day: obj.substr(6, 2),
+                hour: obj.substr(8, 2),
+                min: obj.substr(10, 2)
+            }
+        }
+
+        // 남은시간 실시간 업데이트
+        function liveUpdate() {
+            if (localStorage.getItem('lastIdx') == 0) return false;
+
+            for (let i = 0; i < $('.availableDate').length; i++) {
+                let objDate = splitDate(JSON.parse(localStorage.getItem('item'))[i]['dday']);
+                let availableDate = new Date(objDate['year'], objDate['month'] - 1, objDate['day'], objDate['hour'], objDate['min']);
+
+                $('.remaindDate').eq(i).text(remaindTime(availableDate));
+            }
+        }
+
+        // 출력 형태 변경
+        function transfromDate(str) {
+            let obj = splitDate(str)
+
+            return obj.year + '년 ' + obj.month + '월 ' + obj.day + '일 ' + obj.hour + '시 ' + obj.min + '분';
+        }
 
         // 아이템 추가 버튼
-        $('#add').click(function () {
-            var insertTag = `
-                <div class="col-xs-12">
-                    <input type="text" placeholder="아이템 이름 입력">
-                </div>
-                <div class="col-xs-4">
-                    <input type="text" name="datepicker" placeholder="날자 선택">
-                </div>
-                <div class="col-xs-4">
-                    <input type="text" name="D-day" placeholder="시간 입력">
-                </div>
-                <div>
-                    <div class="remaindTime">남은시간 : </div>
+        $('#btn_add').click(function () {
+            let lastIdx = localStorage.getItem('lastIdx'),
+                abbDate = $('#datepicker').val() + ' ' + $('#time').val();
+            let itemSource = `
+                <div date-idx="${lastIdx++}">
+                    <div>
+                        ${$('#itemName').val()}
+                    </div>
+                    <div>
+                        만료기간 :
+                        <span class="availableDate">
+                            ${transfromDate(abbDate.replace(/[^0-9]/g, ''))}
+                        </span>
+                    </div>
+                    <div>
+                        남은시간 : 
+                        <span class="remaindDate">
+                        </span>
+                    </div>
+                    <button type="button" class="btn_delete">X</button>
                 </div>
                 `
-            var stcode= '';
 
-            stcode += '<div>';
-            stcode += '<div>';
-            stcode += $('#itemName').val();
-            stcode += '</div>';
-            stcode += '<div>';
-            stcode += $('#datepicker').val() + ' ' + $('#D-day').val();
-            stcode += '</div>';
-            stcode += '<div>';
-            stcode += '남은시간 : ' + remaindTime();
-            stcode += '</div>';
-            stcode += '</div>';
+            // 빈칸체크
+            if ($('#itemName').val().length == 0) {
+                alert('아이템 이름을 입력해 주세요.');
+                $('#itemName').focus();
 
-            $('#itemList').append(stcode);
-            console.log('success');
-            console.log(stcode);
+                return false;
+            }
+            if ($('#datepicker').val().length == 0) {
+                alert('날짜를 선택해 주세요.');
+                $('#datepicker').focus();
+
+                return false;
+            }
+            if ($('#time').val().length == 0) {
+                alert('시간을 입력해 주세요.');
+                $('#time').focus();
+
+                return false;
+            }
+
+            $('#itemList').append(itemSource);
+
+            // lastIdx 업데이트
+            localStorage.setItem('lastIdx', lastIdx);
+
+            // localStorage 업데이트
+            let setJSON = {
+                itemName: $('#itemName').val(),
+                dday: abbDate.replace(/[^0-9]/g, '')
+            }
+            let getJSON = JSON.parse(localStorage.getItem('item'));
+
+            getJSON.push(setJSON);
+            localStorage.setItem('item', JSON.stringify(getJSON));
+
+            // 초기화
+            $('#itemName').val('');
+            $('#datepicker').val('');
+            $('#time').val('');
+        });
+
+        // 아이템 리스트 목록 삭제
+        $(document).on('click', '.btn_delete', function () {
+            let idx = $($(this).parents()[0]).data("idx");
+            let getJSON = JSON.parse(localStorage.getItem('item')),
+                lastIdx = localStorage.getItem('lastIdx');
+
+            getJSON.splice(idx, 1);
+            localStorage.setItem('item', JSON.stringify(getJSON));
+            localStorage.setItem('lastIdx', --lastIdx);
+
+            $(this).parents('div')[0].remove();
         });
 
         // includeHTML
         $('header').load('/meplication/include/header.html')
-
-        // testBtn
-        $('#testBtn').click(function () {
-            var something = $('#datepicker').val(),
-                sm = $('#D-day').val(),
-                now = new Date();
-
-            var year = moment(something).format('YYYY'),
-                month = moment(something).format('MM') - 1,
-                day = moment(something).format('DD'),
-                hour = 0,
-                min = 0;
-
-            var ny = now.getFullYear(),
-                nm = now.getMonth() + 1,
-                nd = now.getDate();
-
-
-            var endDate = new Date(year, month, day, hour, min);
-
-            // console.log('endDate : ' + endDate);
-            var cc = endDate.getTime() - now.getTime();
-            console.log((cc / 1000 / 60) % 60)
-        });
     </script>
 </body>
 
