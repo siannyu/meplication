@@ -207,7 +207,7 @@
         // 아이템 추가 버튼
         $('#btn_add').click(function () {
             let lastIdx = localStorage.getItem('lastIdx'),
-                abbDate = $('#datepicker').val() + ' ' + $('#time').val();
+                abbDate = ($('#datepicker').val() + ' ' + $('#time').val()).replace(/[^0-9]/g, '');
             let itemSource = `
                 <div date-idx="${lastIdx++}">
                     <div>
@@ -216,7 +216,7 @@
                     <div>
                         만료기간 :
                         <span class="availableDate">
-                            ${transfromDate(abbDate.replace(/[^0-9]/g, ''))}
+                            ${transfromDate(abbDate)}
                         </span>
                     </div>
                     <div>
@@ -256,7 +256,7 @@
             // localStorage 업데이트
             let setJSON = {
                 itemName: $('#itemName').val(),
-                dday: abbDate.replace(/[^0-9]/g, '')
+                dday: abbDate
             }
             let getJSON = JSON.parse(localStorage.getItem('item'));
 
