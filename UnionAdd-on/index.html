@@ -29,17 +29,46 @@
         유니온 배치를 효율적으로 해주는 사이트 애드온 입니다.
         <hr>
         <textarea id="input" cols="100" rows="10"></textarea>
-        <button id="btn_extract" type="button">추출</button>
+        <button id="btn_loadInfo" type="button">캐릭터 정보 가져오기</button>
     </main>
     <script>
-        $('#input').on("propertychange change keyup paste input", function() {
-            if($(this).val().length == 0) return;
-            let orignal = $(this).val();
-            let term = $(this).val().indexOf('캐릭터 선택');
-            // console.log(term);
-            console.log($(this).val());
-            console.log(orignal.substring(term, orignal,length));
-            $(this).val('');
+        // 캐릭터 닉네임 가져오기
+        $('#input').on("paste", function(e) {
+            var pasteText = (event.clipboardData || window.clipboardData).getData('text').split('\n');
+            var idx, world;
+
+            // 붙여넣기 작업취소
+            e.preventDefault();
+            for(i in pasteText) {
+                let nickIdx = pasteText[i].indexOf('대표캐릭터는 10레벨 이상이어야 지정할 수 있습니다');
+                let worldIdx = pasteText[i].indexOf('캐릭터 선택');
+                if(nickIdx != -1) {
+                    idx=i;
+                }
+                if(worldIdx != -1) {
+                    world = pasteText[i].substring(worldIdx+6, pasteText[i].length);
+                }
+            }
+            // 원하는 정보 아니면 빠져나가기
+            if(idx == undefined)    return;
+            
+            let nick = pasteText[idx-1].split(world);
+
+            for(let i=1; i<nick.length; i++) {
+                if(nick[i].indexOf(nick[i-1]) != -1) {
+                    let prevNick= nick[i].substring(nick[i].indexOf(nick[i-1]), nick[i-1].length);
+                    nick[i] = nick[i].replace(prevNick, '');
+                }
+            }
+            
+            var  nickList= '';
+            for(var i=0; i<nick.length-1; i++) {
+                nickList += nick[i];
+                if(i != nick.length-2) {
+                    nickList += '\n';
+                }
+            }
+            $(this).val(nickList);
         });
 
         // includeHTML
