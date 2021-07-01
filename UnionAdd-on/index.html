@@ -48,6 +48,9 @@
                 }
                 if(worldIdx != -1) {
                     world = pasteText[i].substring(worldIdx+6, pasteText[i].length);
+                    if(world.indexOf('\r') != -1) {
+                        world = world.substring(0, world.length-2);
+                    }
                 }
             }
             console.log(idx);
