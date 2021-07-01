@@ -58,9 +58,11 @@
             let nick = pasteText[idx-1].split(world);
 
             for(let i=1; i<nick.length; i++) {
+                console.log(nick[i]);
                 if(nick[i].indexOf(nick[i-1]) != -1) {
                     let prevNick= nick[i].substring(nick[i].indexOf(nick[i-1]), nick[i-1].length);
                     nick[i] = nick[i].replace(prevNick, '');
+                    console.log(nick[i]);
                 }
             }
             
