@@ -50,6 +50,8 @@
                     world = pasteText[i].substring(worldIdx+6, pasteText[i].length);
                 }
             }
+            console.log(nickIdx);
+            console.log(world);
             // 원하는 정보 아니면 빠져나가기
             if(idx == undefined)    return;
             
@@ -69,6 +71,7 @@
                     nickList += '\n';
                 }
             }
+            console.log(nickList);
             $(this).val(nickList);
         });
 
