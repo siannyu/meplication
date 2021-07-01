@@ -39,6 +39,7 @@
 
             // 붙여넣기 작업취소
             e.preventDefault();
+            console.log(pasteText);
             for(i in pasteText) {
                 let nickIdx = pasteText[i].indexOf('대표캐릭터는 10레벨 이상이어야 지정할 수 있습니다');
                 let worldIdx = pasteText[i].indexOf('캐릭터 선택');
