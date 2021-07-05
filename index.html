@@ -2,35 +2,88 @@
 <html>
 
 <head>
-    <title>메이플스토리 도우미</title>
     <!-- jQuery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery ui cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+        integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-    <!-- includeHTML -->
-    <script src="/meplication/js/w3.js"></script>
+    <!-- momentjs cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
-    <header w3-include-html="/meplication/include/header.html"></header>
+    <header></header>
     <main>
-        <a href="/meplication/materialCalc/">전문기술 재료 아이템 계산기</a>
-        <br>
-        <a href="/meplication/nyehuing/">녜힁 닉네임 생성여부 확인</a>
-        <br>
-        <a href="/meplication/ItemManagement/">기간제 아이템 관리</a>
-        <br>
-        <a href="/meplication/UnionAdd-on">유니온 애드온</a>
-        <br>
+        유니온 배치를 효율적으로 해주는 사이트 애드온 입니다.
+        <hr>
+        <textarea id="input" cols="100" rows="10"></textarea>
+        <button id="btn_loadInfo" type="button">캐릭터 정보 가져오기</button>
     </main>
-
     <script>
+        // 캐릭터 닉네임 가져오기
+        $('#input').on("paste", function(e) {
+            var pasteText = (event.clipboardData || window.clipboardData).getData('text').split('\n');
+            var idx, world;
+
+            // 붙여넣기 작업취소
+            e.preventDefault();
+            console.log(pasteText);
+            for(i in pasteText) {
+                let nickIdx = pasteText[i].indexOf('대표캐릭터는 10레벨 이상이어야 지정할 수 있습니다');
+                let worldIdx = pasteText[i].indexOf('캐릭터 선택');
+                if(nickIdx != -1) {
+                    idx=i;
+                }
+                if(worldIdx != -1) {
+                    world = pasteText[i].substring(worldIdx+6, pasteText[i].length);
+                    // \r개행 제거
+                    if(world.indexOf('\r') != -1) {
+                        world = world.substring(0, world.length-1);
+                    }
+                }
+            }
+            console.log(idx);
+            console.log(world);
+            // 원하는 정보 아니면 빠져나가기
+            if(idx == undefined)    return;
+            
+            let nick = pasteText[idx-1].split(world);
+
+            console.log(nick);
+
+            for(let i=1; i<nick.length; i++) {
+                if(nick[i].indexOf(nick[i-1]) != -1) {
+                    let prevNick= nick[i].substring(nick[i].indexOf(nick[i-1]), nick[i-1].length);
+                    nick[i] = nick[i].replace(prevNick, '');
+                    console.log(nick[i]);
+                }
+            }
+            
+            var  nickList= '';
+            for(var i=0; i<nick.length-1; i++) {
+                nickList += nick[i];
+                if(i != nick.length-2) {
+                    nickList += '\n';
+                }
+            }
+            console.log(nickList);
+            $(this).val(nickList);
+        });
+
         // includeHTML
-        w3.includeHTML();
+        $('header').load('/meplication/include/header.html')
     </script>
 </body>
 
