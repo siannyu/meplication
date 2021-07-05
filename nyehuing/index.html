@@ -97,6 +97,26 @@
       onclick='document.getElementById("demo").innerHTML = bulkNyehuing(document.getElementById("amount").value, 6)'>더욱
       긴
       녜힁</button>
+
+    <!-- test -->
+    <button type="button" id="test">test</button>
+    <script>
+      $('#test').click(function () {
+        $.ajax({
+          url: "http://52.231.207.3:8000/nick",
+          type: "get",
+          data: {'nick': '아미츠'},
+          dataType: "json",
+          success: function (res) {
+            console.log('success');
+          },
+          error: function (res) {
+            console.log('err');
+          }
+        });
+      })
+    </script>
+    <!--  -->
   </main>
 </body>
 
