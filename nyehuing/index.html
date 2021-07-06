@@ -71,7 +71,7 @@
           dataType: "json",
           success: function (res) {
             console.log('success');
-            console.log(res);
+            console.log(JSON.parse(res));
             data = name;
           },
           error: function (res) {
