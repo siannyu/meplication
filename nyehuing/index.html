@@ -65,15 +65,14 @@
         var data;
 
         $.ajax({
-          url: corsProxy + "https://maplestory.nexon.com/Ranking/World/Total?c=" + name,
-          dataType: "html",
-          async: false,
+          url: "https://meplication.koreasouth.cloudapp.azure.com/nick",
+          type: "get",
+          data: { 'nick': name },
+          dataType: "json",
           success: function (res) {
-            if ($(res).find('#container > div > div > div:nth-child(4) > div.rank_table_wrap > table > tbody > tr.search_com_chk').length) {
-              data = name + '<font color="red"> (불가능)</font>';
-            } else {
-              data = name + '<font color="green"> (가능)</font>';
-            }
+            console.log('success');
+            console.log(res);
+            data = name;
           },
           error: function (res) {
             console.log('err');
@@ -97,26 +96,6 @@
       onclick='document.getElementById("demo").innerHTML = bulkNyehuing(document.getElementById("amount").value, 6)'>더욱
       긴
       녜힁</button>
-
-    <!-- test -->
-    <button type="button" id="test">test</button>
-    <script>
-      $('#test').click(function () {
-        $.ajax({
-          url: "https://meplication.koreasouth.cloudapp.azure.com/nick",
-          type: "get",
-          data: {'nick': '아미츠'},
-          dataType: "json",
-          success: function (res) {
-            console.log('success');
-          },
-          error: function (res) {
-            console.log('err');
-          }
-        });
-      })
-    </script>
-    <!--  -->
   </main>
 </body>
 
