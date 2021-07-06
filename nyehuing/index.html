@@ -62,17 +62,20 @@
 
       // 닉네임 검색
       function nameCheck(name) {
-        var data;
+        let data;
 
         $.ajax({
           url: "https://meplication.koreasouth.cloudapp.azure.com/nick",
           type: "get",
           data: { 'nick': name },
           dataType: "json",
+          async: false,
           success: function (res) {
-            console.log('success');
-            console.log(JSON.parse(res));
-            data = name;
+            if (res.exists == 'Yes') {
+              data = name + '<font color="red"> (불가능)</font>';
+            } else if (res.exists == 'No') {
+              data = name + '<font color="green"> (가능)</font>';
+            }
           },
           error: function (res) {
             console.log('err');
