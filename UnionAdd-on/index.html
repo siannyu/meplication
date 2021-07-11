@@ -35,49 +35,49 @@
     </main>
     <script>
         // 캐릭터 닉네임 가져오기
-        $('#input').on("paste", function(e) {
+        $('#input').on("paste", function (e) {
             var pasteText = (event.clipboardData || window.clipboardData).getData('text').split('\n');
             var idx, world;
 
             // 붙여넣기 작업취소
             e.preventDefault();
-            for(i in pasteText) {
+            for (i in pasteText) {
                 let nickIdx = pasteText[i].indexOf('대표캐릭터는 10레벨 이상이어야 지정할 수 있습니다');
                 let worldIdx = pasteText[i].indexOf('캐릭터 선택');
-                if(nickIdx != -1) {
-                    idx=i;
+                if (nickIdx != -1) {
+                    idx = i;
                 }
-                if(worldIdx != -1) {
-                    world = pasteText[i].substring(worldIdx+6, pasteText[i].length);
+                if (worldIdx != -1) {
+                    world = pasteText[i].substring(worldIdx + 6, pasteText[i].length);
                     // \r개행 제거
-                    if(world.indexOf('\r') != -1) {
-                        world = world.substring(0, world.length-1);
+                    if (world.indexOf('\r') != -1) {
+                        world = world.substring(0, world.length - 1);
                     }
                 }
             }
             // 원하는 정보 아니면 빠져나가기
-            if(idx == undefined)    return;
-            
-            let nick = pasteText[idx-1].split(world);
+            if (idx == undefined) return;
 
-            for(let i=1; i<nick.length; i++) {
-                if(nick[i].indexOf(nick[i-1]) != -1) {
-                    let prevNick= nick[i].substring(nick[i].indexOf(nick[i-1]), nick[i-1].length);
+            let nick = pasteText[idx - 1].split(world);
+
+            for (let i = 1; i < nick.length; i++) {
+                if (nick[i].indexOf(nick[i - 1]) != -1) {
+                    let prevNick = nick[i].substring(nick[i].indexOf(nick[i - 1]), nick[i - 1].length);
                     nick[i] = nick[i].replace(prevNick, '');
                 }
             }
-            
-            var  nickList= '';
-            for(var i=0; i<nick.length-1; i++) {
+
+            var nickList = '';
+            for (var i = 0; i < nick.length - 1; i++) {
                 nickList += nick[i];
-                if(i != nick.length-2) {
+                if (i != nick.length - 2) {
                     nickList += '\n';
                 }
             }
             $(this).val(nickList);
         });
 
-        $('#btn_loadInfo').click(function() {
+        $('#btn_loadInfo').click(function () {
             console.log('ajax');
 
             let getNick = $('#input').val().split('\n');
@@ -86,7 +86,7 @@
                 type: "post",
                 data: { 'nickList': String(getNick) },
                 dataType: "json",
-                // timeout: 15000,
+                timeout: 20000,
                 beforeSend: function () {
                     $('.container').html(
                         `<div class="spinner-border" role="status">
@@ -101,7 +101,7 @@
                 error: function (res) {
                     console.log('err');
                     console.log(res);
-                    if(res.statusText == 'timeout') {
+                    if (res.statusText == 'timeout') {
                         alert('연결시간 초과!')
                     }
                     $('.container').html('fail');
