@@ -83,7 +83,35 @@
         });
 
         $('#btn_loadInfo').click(function() {
-            console.log('aa');
+            console.log('ajax');
+
+            let getNick = $('#input').val().split('\n');
+            $.ajax({
+                url: "https://meplication.koreasouth.cloudapp.azure.com/charInfo",
+                type: "post",
+                data: { 'nickList': String(getNick) },
+                dataType: "json",
+                // timeout: 15000,
+                beforeSend: function () {
+                    $('.container').html(
+                        `<div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>`);
+                },
+                success: function (res) {
+                    console.log('success');
+                    console.log(res);
+                    $('.container').text(res.쉥누.level);
+                },
+                error: function (res) {
+                    console.log('err');
+                    console.log(res);
+                    if(res.statusText == 'timeout') {
+                        alert('연결시간 초과!')
+                    }
+                    $('.container').html('fail');
+                }
+            });
         });
 
         // includeHTML
