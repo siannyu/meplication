@@ -28,8 +28,10 @@
     <main>
         유니온 배치를 효율적으로 해주는 사이트 애드온 입니다.
         <hr>
-        <textarea id="input" cols="100" rows="10"></textarea>
-        <button id="btn_loadInfo" type="button">캐릭터 정보 가져오기</button>
+        <div class="container">
+            <textarea id="input" cols="100" rows="10"></textarea>
+            <button id="btn_loadInfo" type="button">캐릭터 정보 가져오기</button>
+        </div>
     </main>
     <script>
         // 캐릭터 닉네임 가져오기
@@ -39,7 +41,6 @@
 
             // 붙여넣기 작업취소
             e.preventDefault();
-            console.log(pasteText);
             for(i in pasteText) {
                 let nickIdx = pasteText[i].indexOf('대표캐릭터는 10레벨 이상이어야 지정할 수 있습니다');
                 let worldIdx = pasteText[i].indexOf('캐릭터 선택');
@@ -54,20 +55,15 @@
                     }
                 }
             }
-            console.log(idx);
-            console.log(world);
             // 원하는 정보 아니면 빠져나가기
             if(idx == undefined)    return;
             
             let nick = pasteText[idx-1].split(world);
 
-            console.log(nick);
-
             for(let i=1; i<nick.length; i++) {
                 if(nick[i].indexOf(nick[i-1]) != -1) {
                     let prevNick= nick[i].substring(nick[i].indexOf(nick[i-1]), nick[i-1].length);
                     nick[i] = nick[i].replace(prevNick, '');
-                    console.log(nick[i]);
                 }
             }
             
@@ -78,7 +74,6 @@
                     nickList += '\n';
                 }
             }
-            console.log(nickList);
             $(this).val(nickList);
         });
 
