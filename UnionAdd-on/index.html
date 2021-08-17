@@ -24,6 +24,15 @@
 </head>
 
 <body>
+    <style>
+        .check_card {
+            border: red solid;
+        }
+
+        .char_card:hover {
+            cursor: pointer;
+        }
+    </style>
     <header></header>
     <main>
         유니온 배치를 효율적으로 해주는 사이트 애드온 입니다.
@@ -31,6 +40,72 @@
         <div class="container">
             <textarea id="input" cols="100" rows="10"></textarea>
             <button id="btn_loadInfo" type="button">캐릭터 정보 가져오기</button>
+        </div>
+        <!-- <div class="row row-cols-1 row-cols-md-6 g-6">
+            <div class="col">
+                <div class="card">
+                    <img src="https://avatar.maplestory.nexon.com/Character/180/AFHFMMAHPGMEJCAMJNJKFLHKNGIEMAMFICNGDGFKBFNHEMJHAOEFGMIPMCEJBDIPPDHOJFIJPBOKNPIDMJLJJPGOMJLKBKLLLCNDDEDPBLIGEHFJKMKGADEHIEBBELKFAJKKNHPPPNEDHHMAKCAHKKPEIALDJOJCAEFNFOMEFMABCFIMCBKPFKCMAFGPFGLDPGOIFKMGIJFPABHDEPLMKDNFNLLCMFBFOENOMLEDMCEHNKHKEJEJFFNMENMMEFBM.png"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">캐릭터 이름</h5>
+                        <p class="card-text">직업</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://avatar.maplestory.nexon.com/Character/180/AFHFMMAHPGMEJCAMJNJKFLHKNGIEMAMFICNGDGFKBFNHEMJHAOEFGMIPMCEJBDIPPDHOJFIJPBOKNPIDMJLJJPGOMJLKBKLLLCNDDEDPBLIGEHFJKMKGADEHIEBBELKFAJKKNHPPPNEDHHMAKCAHKKPEIALDJOJCAEFNFOMEFMABCFIMCBKPFKCMAFGPFGLDPGOIFKMGIJFPABHDEPLMKDNFNLLCMFBFOENOMLEDMCEHNKHKEJEJFFNMENMMEFBM.png"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">캐릭터 이름</h5>
+                        <p class="card-text">직업</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://avatar.maplestory.nexon.com/Character/180/AFHFMMAHPGMEJCAMJNJKFLHKNGIEMAMFICNGDGFKBFNHEMJHAOEFGMIPMCEJBDIPPDHOJFIJPBOKNPIDMJLJJPGOMJLKBKLLLCNDDEDPBLIGEHFJKMKGADEHIEBBELKFAJKKNHPPPNEDHHMAKCAHKKPEIALDJOJCAEFNFOMEFMABCFIMCBKPFKCMAFGPFGLDPGOIFKMGIJFPABHDEPLMKDNFNLLCMFBFOENOMLEDMCEHNKHKEJEJFFNMENMMEFBM.png"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">캐릭터 이름</h5>
+                        <p class="card-text">직업</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://avatar.maplestory.nexon.com/Character/180/AFHFMMAHPGMEJCAMJNJKFLHKNGIEMAMFICNGDGFKBFNHEMJHAOEFGMIPMCEJBDIPPDHOJFIJPBOKNPIDMJLJJPGOMJLKBKLLLCNDDEDPBLIGEHFJKMKGADEHIEBBELKFAJKKNHPPPNEDHHMAKCAHKKPEIALDJOJCAEFNFOMEFMABCFIMCBKPFKCMAFGPFGLDPGOIFKMGIJFPABHDEPLMKDNFNLLCMFBFOENOMLEDMCEHNKHKEJEJFFNMENMMEFBM.png"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">캐릭터 이름</h5>
+                        <p class="card-text">직업</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="char_char" class="container row row-cols-1 row-cols-md-6 g-4"></div> -->
+        <div>
+            <div style="display: inline; width: 140px; height: 200px;">
+                <div style="background-color: #f3f3f3; width: 138px; height: 126px; border-radius: 75px; text-align: center; vertical-align: middle; margin: 0px; display: inline-block;">
+                    <img src="https://avatar.maplestory.nexon.com/Character/180/AFHFMMAHPGMEJCAMJNJKFLHKNGIEMAMFICNGDGFKBFNHEMJHAOEFGMIPMCEJBDIPPDHOJFIJPBOKNPIDMJLJJPGOMJLKBKLLLCNDDEDPBLIGEHFJKMKGADEHIEBBELKFAJKKNHPPPNEDHHMAKCAHKKPEIALDJOJCAEFNFOMEFMABCFIMCBKPFKCMAFGPFGLDPGOIFKMGIJFPABHDEPLMKDNFNLLCMFBFOENOMLEDMCEHNKHKEJEJFFNMENMMEFBM.png"
+                    style="position: relative; left: -19px; top: -42px;">
+                </div>
+                <div style="text-align:center;">
+                    <h5>캐릭터 이름</h5>
+                    <p>직업</p>
+                </div>
+            </div>
+            <div style="display: inline;">
+                <div style="background-color: #f3f3f3; width: 138px; height: 126px; border-radius: 75px; text-align: center; vertical-align: middle; margin: 0px; display: inline-block;">
+                    <img src="https://avatar.maplestory.nexon.com/Character/180/AFHFMMAHPGMEJCAMJNJKFLHKNGIEMAMFICNGDGFKBFNHEMJHAOEFGMIPMCEJBDIPPDHOJFIJPBOKNPIDMJLJJPGOMJLKBKLLLCNDDEDPBLIGEHFJKMKGADEHIEBBELKFAJKKNHPPPNEDHHMAKCAHKKPEIALDJOJCAEFNFOMEFMABCFIMCBKPFKCMAFGPFGLDPGOIFKMGIJFPABHDEPLMKDNFNLLCMFBFOENOMLEDMCEHNKHKEJEJFFNMENMMEFBM.png"
+                        style="position: relative; left: -19px; top: -42px;">
+                </div>
+                <div>
+                    <h5>캐릭터 이름</h5>
+                    <p>직업</p>
+                </div>
+            </div>
+
         </div>
     </main>
     <script>
@@ -77,6 +152,27 @@
             $(this).val(nickList);
         });
 
+        function char_card(char_info, nickList) {
+            console.log(Object.keys(char_info).length);
+            console.log(Object.values(char_info));
+            for (var i = 0; i < Object.keys(char_info).length; i++) {
+                let source = `
+                <div class="col char_card">
+                    <div class="card">
+                        <img src="${Object.values(char_info)[i].img}"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${Object.keys(char_info)[i]}</h5>
+                            <p class="card-text">${Object.values(char_info)[i].level}</p>
+                            <p class="card-text">${Object.values(char_info)[i].job}</p>
+                        </div>
+                    </div>
+                </div>`
+
+                $('#char_char').append(source);
+            }
+        }
+
         $('#btn_loadInfo').click(function () {
             console.log('ajax');
 
@@ -86,7 +182,7 @@
                 type: "post",
                 data: { 'nickList': String(getNick) },
                 dataType: "json",
-                timeout: 20000,
+                timeout: 30000,
                 beforeSend: function () {
                     $('.container').html(
                         `<div class="spinner-border" role="status">
@@ -96,7 +192,7 @@
                 success: function (res) {
                     console.log('success');
                     console.log(res);
-                    $('.container').text(res.쉥누.level);
+                    char_card(res, getNick);
                 },
                 error: function (res) {
                     console.log('err');
@@ -108,6 +204,11 @@
                 }
             });
         });
+
+        $(document).on('click', '.char_card', function () {
+            console.log(this);
+            // $(this).css()
+        })
 
         // includeHTML
         $('header').load('/meplication/include/header.html')
