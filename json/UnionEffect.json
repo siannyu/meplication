@@ -1,10 +1,12 @@
 {
     "저격수": {
         "kName": "critical",
+        "class": "Bowman",
         "B": "1"
     },
     "신궁": {
         "kName": "critical",
+        "class": "Bowman",
         "A": "2",
         "S": "3",
         "SS": "4",
@@ -12,10 +14,12 @@
     },
     "허밋": {
         "kName": "critical",
+        "class": "Thief",
         "B": "1"
     },
     "나이트로드": {
         "kName": "critical",
+        "class": "Thief",
         "A": "2",
         "S": "3",
         "SS": "4",
@@ -23,6 +27,7 @@
     },
     "메르세데스": {
         "kName": "coolDown",
+        "class": "Bowman",
         "B": "2",
         "A": "3",
         "S": "4",
@@ -31,6 +36,7 @@
     },
     "데몬어벤져": {
         "kName": "bossDamage",
+        "class": "Warrior",
         "B": "1",
         "A": "2",
         "S": "3",
@@ -39,6 +45,7 @@
     },
     "블래스터": {
         "kName": "ignoreDefense",
+        "class": "Warrior",
         "B": "1",
         "A": "2",
         "S": "3",
@@ -47,6 +54,7 @@
     },
     "와일드헌터": {
         "kName": "boostDamage",
+        "class": "Bowman",
         "B": "4",
         "A": "8",
         "S": "12",
@@ -55,6 +63,7 @@
     },
     "메카닉": {
         "kName": "buffDuration",
+        "class": "Pirate",
         "B": "5",
         "A": "10",
         "S": "15",
@@ -63,6 +72,7 @@
     },
     "은월": {
         "kName": "criticalDamage",
+        "class": "Pirate",
         "B": "1",
         "A": "2",
         "S": "3",
@@ -71,6 +81,7 @@
     },
     "제로": {
         "kName": "EXP",
+        "class": "Warrior",
         "B": "4",
         "A": "6",
         "S": "8",
@@ -79,6 +90,7 @@
     },
     "팬텀": {
         "kName": "mesosDrop",
+        "class": "Thief",
         "B": "1",
         "A": "2",
         "S": "3",
@@ -87,6 +99,7 @@
     },
     "소울마스터": {
         "kName": "finalHP",
+        "class": "Warrior",
         "B": "250",
         "A": "500",
         "S": "1000",
@@ -95,6 +108,7 @@
     },
     "미하일": {
         "kName": "finalHP",
+        "class": "Warrior",
         "B": "250",
         "A": "500",
         "S": "1000",
@@ -103,10 +117,12 @@
     },
     "발키리": {
         "kName": "summon",
+        "class": "Pirate",
         "B": "4"
     },
     "캡틴": {
         "kName": "summon",
+        "class": "Pirate",
         "A": "6",
         "S": "8",
         "SS": "10",
@@ -114,6 +130,7 @@
     },
     "아란": {
         "kName": "recoverHP",
+        "class": "Warrior",
         "B": "2",
         "A": "4",
         "S": "6",
@@ -122,6 +139,7 @@
     },
     "에반": {
         "kName": "recoverMP",
+        "class": "Magician",
         "B": "2",
         "A": "4",
         "S": "6",
@@ -130,10 +148,12 @@
     },
     "버서커": {
         "kName": "maxHP",
+        "class": "Warrior",
         "B": "2"
     },
     "다크나이트": {
         "kName": "maxHP",
+        "class": "Warrior",
         "A": "3",
         "S": "4",
         "SS": "5",
@@ -141,10 +161,12 @@
     },
     "메이지(불,독)": {
         "kName": "maxMP",
+        "class": "Magician",
         "B": "2"
     },
     "아크메이지(불,독)": {
         "kName": "maxMP",
+        "class": "Magician",
         "A": "3",
         "S": "4",
         "SS": "5",
@@ -152,6 +174,7 @@
     },
     "데몬슬레이어": {
         "kName": "statusResistance",
+        "class": "Warrior",
         "B": "1",
         "A": "2",
         "S": "3",
@@ -160,6 +183,7 @@
     },
     "메이플M": {
         "kName": "ATT",
+        "class": "Bowman",
         "B": "5",
         "A": "10",
         "S": "15",
@@ -171,6 +195,7 @@
             "DEX",
             "LUK"
         ],
+        "class": "Thief",
         "B": "5",
         "A": "10",
         "S": "20",
@@ -179,6 +204,7 @@
     },
     "스트라이커": {
         "kName": "STR",
+        "class": "Pirate",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -187,6 +213,7 @@
     },
     "카이저": {
         "kName": "STR",
+        "class": "Warrior",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -195,10 +222,12 @@
     },
     "버커니어": {
         "kName": "STR",
+        "class": "Pirate",
         "B": "10"
     },
     "바이퍼": {
         "kName": "STR",
+        "class": "Pirate",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -206,10 +235,12 @@
     },
     "크루세이더": {
         "kName": "STR",
+        "class": "Warrior",
         "B": "10"
     },
     "히어로": {
         "kName": "STR",
+        "class": "Warrior",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -217,10 +248,12 @@
     },
     "나이트": {
         "kName": "STR",
+        "class": "Warrior",
         "B": "10"
     },
     "팔라딘": {
         "kName": "STR",
+        "class": "Warrior",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -228,10 +261,12 @@
     },
     "캐논블래스터": {
         "kName": "STR",
+        "class": "Pirate",
         "B": "10"
     },
     "캐논마스터": {
         "kName": "STR",
+        "class": "Pirate",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -239,6 +274,7 @@
     },
     "아크": {
         "kName": "STR",
+        "class": "Warrior",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -247,6 +283,7 @@
     },
     "아델": {
         "kName": "STR",
+        "class": "Warrior",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -255,10 +292,12 @@
     },
     "레인저": {
         "kName": "DEX",
+        "class": "Bowman",
         "B": "10"
     },
     "보우마스터": {
         "kName": "DEX",
+        "class": "Bowman",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -266,6 +305,7 @@
     },
     "윈드브레이커": {
         "kName": "DEX",
+        "class": "Bowman",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -274,6 +314,7 @@
     },
     "엔젤릭버스터": {
         "kName": "DEX",
+        "class": "Pirate",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -282,10 +323,12 @@
     },
     "체이서": {
         "kName": "DEX",
+        "class": "Bowman",
         "B": "10"
     },
     "패스파인더": {
         "kName": "DEX",
+        "class": "Bowman",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -293,6 +336,7 @@
     },
     "카인": {
         "kName": "DEX",
+        "class": "Bowman",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -301,10 +345,12 @@
     },
     "메이지(썬,콜)": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10"
     },
     "아크메이지(썬,콜)": {
         "kName": "INT",
+        "class": "Magician",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -312,10 +358,12 @@
     },
     "프리스트": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10"
     },
     "비숍": {
         "kName": "INT",
+        "class": "Magician",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -323,6 +371,7 @@
     },
     "배틀메이지": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -331,6 +380,7 @@
     },
     "루미너스": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -339,6 +389,7 @@
     },
     "플레임위자드": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -347,6 +398,7 @@
     },
     "키네시스": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -355,6 +407,7 @@
     },
     "일리움": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -363,6 +416,7 @@
     },
     "라라": {
         "kName": "INT",
+        "class": "Magician",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -371,6 +425,7 @@
     },
     "나이트워커": {
         "kName": "LUK",
+        "class": "Thief",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -379,10 +434,12 @@
     },
     "시프마스터": {
         "kName": "LUK",
+        "class": "Thief",
         "B": "10"
     },
     "섀도어": {
         "kName": "LUK",
+        "class": "Thief",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -390,10 +447,12 @@
     },
     "슬래셔": {
         "kName": "LUK",
+        "class": "Thief",
         "B": "10"
     },
     "듀얼블레이더": {
         "kName": "LUK",
+        "class": "Thief",
         "A": "20",
         "S": "40",
         "SS": "80",
@@ -401,6 +460,7 @@
     },
     "카데나": {
         "kName": "LUK",
+        "class": "Thief",
         "B": "10",
         "A": "20",
         "S": "40",
@@ -409,6 +469,7 @@
     },
     "호영": {
         "kName": "LUK",
+        "class": "Thief",
         "B": "10",
         "A": "20",
         "S": "40",
