@@ -81,6 +81,7 @@
         </div>
         <span id="tooltip" data-tooltip-text="I'm Tooltip"></span>
     </main>
+    <footer></footer>
     <script>
         let levelArr = [],
             union = {
@@ -285,7 +286,6 @@
                                 union_rank(union.level);
                             } else {
                                 console.log("fail '" + getNick[i] + "' ")
-                                console.log(res);
                             }
                         },
                         error: function (res) {
@@ -525,7 +525,8 @@
         })
 
         // includeHTML
-        $('header').load('/meplication/include/header.html')
+        $('header').load('/meplication/include/header.html');
+        $('footer').load('/meplication/include/footer.html');
     </script>
 </body>
 
