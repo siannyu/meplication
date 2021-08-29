@@ -2,35 +2,61 @@
 <html>
 
 <head>
-    <title>메이플스토리 도우미</title>
     <!-- jQuery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery ui cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+        integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-    <!-- includeHTML -->
-    <script src="/meplication/js/w3.js"></script>
+    <!-- momentjs cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Font-Awesome cdn -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- css -->
+    <link rel="stylesheet" href="/maplication/css/main.css">
+    <title>메이플스토리 어플리케이션</title>
 </head>
 
 <body>
-    <header w3-include-html="/meplication/include/header.html"></header>
+    <header></header>
     <main>
-        <a href="/meplication/materialCalc/">전문기술 재료 아이템 계산기</a>
-        <br>
-        <a href="/meplication/nyehuing/">녜힁 닉네임 생성여부 확인</a>
-        <br>
-        <a href="/meplication/ItemManagement/">기간제 아이템 관리</a>
-        <br>
-        <a href="/meplication/UnionAdd-on">유니온 애드온</a>
-        <br>
+        <div class="container">
+            <a href="/meplication/materialCalc/" class="btn btn-primary">
+                <i class="fas fa-calculator fa-3x"></i>
+                <span>전문기술 재료 아이템 계산기</span>
+            </a>
+            <a href="/meplication/nyehuing/" class="btn btn-success">
+                <i class="fas fa-check fa-3x"></i>
+                <span>녜힁 닉네임 생성여부 확인</span>
+            </a>
+            <a href="/meplication/ItemManagement/" class="btn btn-danger">
+                <i class="fas fa-list fa-3x"></i>
+                <span>기간제 아이템 관리</span>
+            </a>
+            <a href="/meplication/union" class="btn btn-warning">
+                <i class="fas fa-users fa-3x"></i>
+                <span>유니온 캐릭터 선택</span>
+            </a>
+        </div>
     </main>
+    <footer></footer>
 
     <script>
         // includeHTML
-        w3.includeHTML();
+        $('header').load('/meplication/include/header.html');
+        $('footer').load('/meplication/include/footer.html');
     </script>
 </body>
 
