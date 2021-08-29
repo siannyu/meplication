@@ -35,11 +35,42 @@
             <div class="row">
                 <div class="col-md-7 char_list">
                     <div id="how_to_use">
-                        <h4>사용법 설명</h4>
+                        <h4 class="text-center">사용법 설명</h4>
+                        <ol>
+                            <li><a href="https://maplestory.nexon.com/Home/Main" target="_blank">메이플스토리 홈페이지</a>에서 로그인을
+                                해줍니다.</li>
+                            <li>
+                                '마이메이플' > '<a href="https://maplestory.nexon.com/MyMaple/Account/MasterCharacter"
+                                    target="_blank">대표캐릭터 변경</a>'을 눌러줍니다.
+                                <img src="/meplication/union/img/1.png">
+                                <!-- <img src="C:\Users\ION\Desktop\2.png" width="50%"> -->
+                            </li>
+                            <li>
+                                서버를 선택해 주세요.<br>만약 넥슨ID이신경우 사용하시는 메이플ID 선택 후 서버를 선택하시면 됩니다.
+                                <img src="/meplication/union/img/2.png" width="100%">
+                            </li>
+                            <li><kbd><kbd>Ctrl</kbd> + <kbd>A</kbd></kbd>를 누르신 후 <kbd><kbd>Ctrl</kbd> +
+                                    <kbd>C</kbd></kbd>를 눌러줍니다.</li>
+                            <li>우축 입력박스에 클릭 후 <kbd><kbd>Ctrl</kbd> + <kbd>V</kbd></kbd>를 눌러줍니다.</li>
+                            <li>캐릭터 닉네임이 정상적으로 보이면 아래 '정보 가져오가' 버튼을 눌러줍니다.<br>캐릭터가 많을 수록 시간이 오래 걸립니다.</li>
+                            <li>메이플스토리M 캐릭터가 있으신 경우 '메이플M 캐릭추가' 버튼을 누른 후<br>레벨을 입력하고 '추가' 버튼을 눌러줍니다.</li>
+                            <li>유니온에 포함시킬 캐릭터를 선택 후 '코드 생성하기' 버튼을 눌러줍니다.</li>
+                            <li>
+                                <a href="https://xenogents.github.io/LegionSolver/" target="_blank">유니온 지도 메이커</a>에 접속 후
+                                <kbd>F12</kbd>를 눌러줍니다.<br>오른쪽에 아래 그림과 같이 창이 나타나야 합니다.
+                                <img src="/meplication/union/img/3.png" width="100%">
+                            </li>
+                            <li>
+                                오른쪽에서 'Console' 을 찾아 클릭해줍니다.
+                                <img src="/meplication/union/img/4.png">
+                            </li>
+                            <li><kbd><kbd>Ctrl</kbd> + <kbd>V</kbd></kbd>를 눌러 복사한 코드를 붙여넣기 해줍니다. 그리고 <kbd>Enter</kbd>를
+                                눌러 줍니다.</li>
+                        </ol>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <span id="checked_card_cnt">선택된 캐릭터 개수 : 0</span>
+                    <span id="checked_card_cnt">선택된 캐릭터 개수 : 0 / ?</span>
                     <table id="effect_list" class="table table-striped table-sm">
                         <colgroup>
                             <col style="width: 80%;">
@@ -65,17 +96,12 @@
                             <button type="button" id="btn_mapleM" class="btn btn-light w-100">추가</button>
                         </div>
                     </div>
-                    <button type="button" id="btn_makeCode" class="btn btn-light w-100" data-bs-toggle="collapse"
-                        data-bs-target="#copyCode" aria-expanded="false" aria-controls="copyCode">코드 생성하기</button>
-                    <div class="collapse" id="copyCode">
-                        <div class="card card-body">
-                            <textarea id="codee"></textarea>
-                        </div>
-                    </div>
+                    <button type="button" id="btn_makeCode" class="btn btn-light w-100">코드 생성하기</button>
                     <div id="union">
                         <div id="rank">유니온 등급</div>
                         <div id="totalLevel">TOTAL LEVEL : 0</div>
                     </div>
+                    <textarea id="code_area"></textarea>
                 </div>
             </div>
         </div>
@@ -212,9 +238,10 @@
                 let nickIdx = pasteText[i].indexOf('대표캐릭터는 10레벨 이상이어야 지정할 수 있습니다');
                 let worldIdx = pasteText[i].indexOf('캐릭터 선택');
                 if (nickIdx != -1) {
-                    idx = i;
+                    // idx = i;
                 }
                 if (worldIdx != -1) {
+                    idx = Number(i);
                     world = pasteText[i].substring(worldIdx + 6, pasteText[i].length);
                     // \r개행 제거
                     if (world.indexOf('\r') != -1) {
@@ -225,8 +252,7 @@
             // 원하는 정보 아니면 빠져나가기
             if (idx === undefined) return;
 
-            let nick = pasteText[idx - 1].split(world);
-
+            let nick = pasteText[idx + 2].split(world);
             for (let i = 1; i < nick.length; i++) {
                 if (nick[i].indexOf(nick[i - 1]) != -1) {
                     let prevNick = nick[i].substring(nick[i].indexOf(nick[i - 1]), nick[i - 1].length);
@@ -284,6 +310,8 @@
                                 }
                                 $('#totalLevel').text('TOTAL LEVEL : ' + union.level);
                                 union_rank(union.level);
+                                if (union.max_cnt == -1) $('#checked_card_cnt').text('선택된 캐릭터 개수 : ' + union.cnt + ' / ?');
+                                else $('#checked_card_cnt').text('선택된 캐릭터 개수 : ' + union.cnt + ' / ' + union.max_cnt);
                             } else {
                                 console.log("fail '" + getNick[i] + "' ")
                             }
@@ -341,10 +369,11 @@
 
         // 코드 생성하기
         $('#btn_makeCode').click(function () {
-            $('#codee').val(`localStorage.setItem("pieceAmounts", "[${String(pieceAmounts)}]");
-            localStorage.setItem("i18n", "KMS");
-            window.location.reload();
-            `);
+            $('#code_area').val(`localStorage.setItem("pieceAmounts", "[${String(pieceAmounts)}]");\nlocalStorage.setItem("i18n", "KMS");\nwindow.location.reload();`);
+            $('#code_area').select();
+            document.execCommand('copy');
+            $('#code_area').blur();
+            alert('복사되었습니다.')
         })
 
         // 카드 생성
@@ -493,7 +522,10 @@
                 }
                 $($btnNode).removeClass('btn-outline-warning');
                 $($btnNode).addClass('btn-warning');
-                if ($(this).data('job') != '메이플M') $cnt.text('선택된 캐릭터 개수 : ' + ++union.cnt + ' / ' + union.max_cnt);
+                if ($(this).data('job') != '메이플M') {
+                    if (union.max_cnt == -1) $cnt.text('선택된 캐릭터 개수 : ' + ++union.cnt + ' / ?');
+                    else $cnt.text('선택된 캐릭터 개수 : ' + ++union.cnt + ' / ' + union.max_cnt);
+                }
                 // 유니온
                 if ($(this).data('job') == '제논') { // 제논
                     for (let i of unionEffect['kName']) {
@@ -503,13 +535,15 @@
                     union[unionEffect['kName']]['val'] += Number(unionEffect[unionRank]);
                 }
                 // LegionSolver
-                console.log($(this).data('rank'));
                 LegionSolver_pieceAmounts($(this).data('rank'), unionEffect.class, 1);
 
             } else {    // 선택해제
                 $($btnNode).removeClass('btn-warning');
                 $($btnNode).addClass('btn-outline-warning');
-                if ($(this).data('job') != '메이플M') $cnt.text('선택된 캐릭터 개수 : ' + --union.cnt + ' / ' + union.max_cnt);
+                if ($(this).data('job') != '메이플M') {
+                    if (union.max_cnt == -1) $cnt.text('선택된 캐릭터 개수 : ' + --union.cnt + ' / ?');
+                    else $cnt.text('선택된 캐릭터 개수 : ' + --union.cnt + ' / ' + union.max_cnt);
+                }
                 // 유니온
                 if ($(this).data('job') == '제논') { // 제논
                     for (let i of unionEffect['kName']) {
