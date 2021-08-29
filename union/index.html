@@ -29,45 +29,12 @@
     <header></header>
     <main>
         유니온 배치 가능한 캐릭터 정보를 불러오는 페이지입니다.<br>
-        자세한 설명은 아래 '사용법 설명'을 읽어주세요.
+        자세한 설명은 아래 '<a href="#" id="help">사용법 설명</a>'을 읽어주세요.
         <hr>
         <div class="container">
             <div class="row">
                 <div class="col-md-7 char_list">
-                    <div id="how_to_use">
-                        <h4 class="text-center">사용법 설명</h4>
-                        <ol>
-                            <li><a href="https://maplestory.nexon.com/Home/Main" target="_blank">메이플스토리 홈페이지</a>에서 로그인을
-                                해줍니다.</li>
-                            <li>
-                                '마이메이플' > '<a href="https://maplestory.nexon.com/MyMaple/Account/MasterCharacter"
-                                    target="_blank">대표캐릭터 변경</a>'을 눌러줍니다.
-                                <img src="/meplication/union/img/1.png">
-                                <!-- <img src="C:\Users\ION\Desktop\2.png" width="50%"> -->
-                            </li>
-                            <li>
-                                서버를 선택해 주세요.<br>만약 넥슨ID이신경우 사용하시는 메이플ID 선택 후 서버를 선택하시면 됩니다.
-                                <img src="/meplication/union/img/2.png" width="100%">
-                            </li>
-                            <li><kbd><kbd>Ctrl</kbd> + <kbd>A</kbd></kbd>를 누르신 후 <kbd><kbd>Ctrl</kbd> +
-                                    <kbd>C</kbd></kbd>를 눌러줍니다.</li>
-                            <li>우축 입력박스에 클릭 후 <kbd><kbd>Ctrl</kbd> + <kbd>V</kbd></kbd>를 눌러줍니다.</li>
-                            <li>캐릭터 닉네임이 정상적으로 보이면 아래 '정보 가져오가' 버튼을 눌러줍니다.<br>캐릭터가 많을 수록 시간이 오래 걸립니다.</li>
-                            <li>메이플스토리M 캐릭터가 있으신 경우 '메이플M 캐릭추가' 버튼을 누른 후<br>레벨을 입력하고 '추가' 버튼을 눌러줍니다.</li>
-                            <li>유니온에 포함시킬 캐릭터를 선택 후 '코드 생성하기' 버튼을 눌러줍니다.</li>
-                            <li>
-                                <a href="https://xenogents.github.io/LegionSolver/" target="_blank">유니온 지도 메이커</a>에 접속 후
-                                <kbd>F12</kbd>를 눌러줍니다.<br>오른쪽에 아래 그림과 같이 창이 나타나야 합니다.
-                                <img src="/meplication/union/img/3.png" width="100%">
-                            </li>
-                            <li>
-                                오른쪽에서 'Console' 을 찾아 클릭해줍니다.
-                                <img src="/meplication/union/img/4.png">
-                            </li>
-                            <li><kbd><kbd>Ctrl</kbd> + <kbd>V</kbd></kbd>를 눌러 복사한 코드를 붙여넣기 해줍니다. 그리고 <kbd>Enter</kbd>를
-                                눌러 줍니다.</li>
-                        </ol>
-                    </div>
+                    <div id="how_to_use"></div>
                 </div>
                 <div class="col-md-3">
                     <span id="checked_card_cnt">선택된 캐릭터 개수 : 0 / ?</span>
@@ -376,6 +343,11 @@
             alert('복사되었습니다.')
         })
 
+        // 사용법 설명 팝업
+        $('#help').click(function() {
+            window.open('/meplication/union/Howtouse','How to use', 'width=610px');
+        })
+
         // 카드 생성
         function cardMaker(data) {
             let source = `
@@ -516,16 +488,16 @@
             // 선택 버튼 토글
             if ($($btnNode).attr('class').indexOf('btn-outline-warning') > 0) { // 선택
                 // 최대 선택 확인
-                if (union.cnt == union.max_cnt) {
+                if (union.cnt == union.max_cnt && $(this).data('job') != '메이플M') {
                     alert('더 이상 선택이 불가능합니다.');
                     return false;
                 }
-                $($btnNode).removeClass('btn-outline-warning');
-                $($btnNode).addClass('btn-warning');
                 if ($(this).data('job') != '메이플M') {
                     if (union.max_cnt == -1) $cnt.text('선택된 캐릭터 개수 : ' + ++union.cnt + ' / ?');
                     else $cnt.text('선택된 캐릭터 개수 : ' + ++union.cnt + ' / ' + union.max_cnt);
                 }
+                $($btnNode).removeClass('btn-outline-warning');
+                $($btnNode).addClass('btn-warning');
                 // 유니온
                 if ($(this).data('job') == '제논') { // 제논
                     for (let i of unionEffect['kName']) {
@@ -561,6 +533,7 @@
         // includeHTML
         $('header').load('/meplication/include/header.html');
         $('footer').load('/meplication/include/footer.html');
+        $('#how_to_use').load('/meplication/union/Howtouse.html');
     </script>
 </body>
 
