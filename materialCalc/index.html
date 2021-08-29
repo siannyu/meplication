@@ -2,22 +2,30 @@
 <html>
 
 <head>
-    <title>전문기술 재료 아이템 계산기</title>
     <!-- jQuery cdn -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- jQuery ui cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+        integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
+    <!-- momentjs cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>전문기술 재료 아이템 계산기</title>
-    <!-- includeHTML -->
-    <script src="/meplication/js/w3.js"></script>
 </head>
 
 <body>
-    <header w3-include-html="/meplication/include/header.html"></header>
+    <header></header>
     <main>
         <div class="container">
             <div class="title">
@@ -787,6 +795,7 @@
             </div>
         </div>
     </main>
+    <footer></footer>
 
     <script>
         var material = {
@@ -795,8 +804,7 @@
             BasicAbrasive: 0, IntermediateAbrasive: 0, AdvancedAbrasive: 0
         }
 
-        // includeHTML
-        w3.includeHTML();
+
 
         // 방어구 50제 부터 결정 포함 / 무기 80제 부터 결정 포함
         // 모자 : 4 1 4 / 상의 : 5 1 4 / 하의 : 5 1 4 / 한벌 (40제 2 10) 10 2 4 / 신발 2 1 2 / 장갑 4 1 4 / 무기 10 3 8
@@ -896,7 +904,7 @@
             $(trObj).find('.material-cnt').text(materialSum + '개');
             // 연마제
             $(trObj).find('.abrasive-cnt').text(abrasiveSum + '개');
-            
+
             if (lv > 40) {
                 // 결정
                 $(trObj).find('.crystal-cnt').text(crystalSum + '개');
@@ -935,30 +943,11 @@
                 $(trObj).find('.input-cnt').val('');
             }
         })
+
+        // includeHTML
+        $('header').load('/meplication/include/header.html');
+        $('footer').load('/meplication/include/footer.html');
     </script>
-
-    <style>
-        .table {
-            --bs-table-active-bg: rgb(231 139 51 / 20%)
-        }
-
-        .input-cnt {
-            height: 18px;
-        }
-
-        .padding-btm {
-            padding-bottom: 7px;
-        }
-
-        .padding-v {
-            padding-top: 7px;
-            padding-bottom: 7px;
-        }
-
-        .border-btm {
-            border-bottom: 1px solid;
-        }
-    </style>
 </body>
 
 </html>
