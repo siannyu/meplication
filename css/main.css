@@ -1,0 +1,17 @@
+a span {
+    position: relative;
+    top: -8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.btn {
+    min-width: 350px;
+    text-align: left;
+    margin: 5px 5px;
+}
+.btn-warning {
+    color: white;
+}
+.btn-warning:hover {
+    color: white;
+}
