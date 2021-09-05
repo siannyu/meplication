@@ -1,0 +1,20 @@
+.table {
+    --bs-table-active-bg: rgb(231 139 51 / 20%)
+}
+
+.input-cnt {
+    height: 18px;
+}
+
+.padding-btm {
+    padding-bottom: 7px;
+}
+
+.padding-v {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.border-btm {
+    border-bottom: 1px solid;
+}
