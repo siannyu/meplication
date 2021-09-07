@@ -21,6 +21,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/meplication/css/itemManagement.css">
     <title>기간제 아이템 관리</title>
 </head>
 
@@ -29,31 +31,31 @@
     <main>
         기간제 아이템들을 등록하고 관리할 수 있는 페이지 입니다.
         <hr>
-        <div class="container" style="">
-            <div class="row">
-                <div class="col-md-3 center-block">
+        <div class="container">
+            <div class="row justify-content-center align-items-center" id="itemWrite">
+                <div class="col-md-4">
                     <label class="control-label" for="itemName">아이템 이름:</label>
                     <input type="text" id="itemName" class="form-control">
-                </divstyle=>
-                <div class="col-md-4">
-                    <label for="datepicker">날짜 선택 : </label>
-                    <input type="text" id="datepicker">
                 </div>
-                <div class="col-md-4">
-                    <label for="time">시간 입력 : </label>
-                    <input type="text" id="time" placeholder="ex) 1330">
+                <div class="col-md-3">
+                    <label class="control-label" for="datepicker">날짜 선택 : </label>
+                    <input type="text" id="datepicker" class="form-control">
                 </div>
-            </div>
-            <div class="text-center">
-                <button id="btn_add">+</button>
+                <div class="col-md-3">
+                    <label class="control-label" for="time">시간 입력 : </label>
+                    <input type="text" id="time" class="form-control" placeholder="ex) 1330">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-warning" id="btn_add">+</button>
+                </div>
             </div>
         </div>
-        <hr>
         <div class="container">
-            <div class="row" id="itemList">
+            <div class="row justify-content-between" id="itemList">
             </div>
         </div>
     </main>
+    <footer></footer>
 
     <script>
         $(function () {
@@ -64,7 +66,10 @@
                 monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
                 monthNamesShort: ['1,', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
                 dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-                dayNamesMin: ['월', '화', '수', '목', '금', '토', '일']
+                dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
+                onSelect: function (dateText, inst) {
+                    $('#time').focus();
+                }
             });
 
             // autocomplete
@@ -91,6 +96,9 @@
                 minLength: 1,
                 focus: function (event, ui) {
                     return false;
+                },
+                select: function (event, ui) {
+                    $('#datepicker').focus();
                 }
             });
 
@@ -102,10 +110,9 @@
                         dday = parsedList[i]['dday'];
 
                     let itemSource = `
-                    <div data-idx="${i}">
-                        <div>
-                            ${itemName}
-                        </div>
+                    <div data-idx="${i}" class="col-md-5 item_box">
+                        <span class="close">&times;</span>
+                        <div><h4>${itemName}</h4></div>
                         <div>
                             만료기간 :
                             <span class="availableDate">
@@ -117,7 +124,6 @@
                             <span class="remaindDate">
                             </span>
                         </div>
-                        <button type="button" class="btn_delete">X</button>
                     </div>
                     `
                     $('#itemList').append(itemSource);
@@ -172,7 +178,12 @@
                 remaindHour = Math.floor(remaind / 60 / 60 % 24),
                 remaindDay = Math.floor(remaind / 60 / 60 / 24);
 
-            return (remaindDay + '일 ' + remaindHour + '시간 ' + remaindMin + '분' + remaindSec + '초');
+            return {
+                day: remaindDay,
+                hour: remaindHour,
+                min: remaindMin,
+                sec: remaindSec
+            };
         }
 
         // 날짜, 시간 분리
@@ -193,8 +204,18 @@
             for (let i = 0; i < $('.availableDate').length; i++) {
                 let objDate = splitDate(JSON.parse(localStorage.getItem('item'))[i]['dday']);
                 let availableDate = new Date(objDate['year'], objDate['month'] - 1, objDate['day'], objDate['hour'], objDate['min']);
+                let remaindTimes = remaindTime(availableDate);
+                let $itemBox = $('.remaindDate').eq(i).parents('div').eq(1);
 
-                $('.remaindDate').eq(i).text(remaindTime(availableDate));
+                $('.remaindDate').eq(i).text(remaindTimes.day + '일 ' + remaindTimes.hour + '시간 ' + remaindTimes.min + '분 ' + remaindTimes.sec + '초');
+
+                if (remaindTimes.day < 0) {
+                    if (!$itemBox.hasClass('warning-3')) $itemBox.addClass('warning-3');
+                } else if (remaindTimes.day < 1) {
+                    if (!$itemBox.hasClass('warning-2')) $itemBox.addClass('warning-2');
+                } else if (remaindTimes.day < 4) {
+                    if (!$itemBox.hasClass('warning-1')) $itemBox.addClass('warning-1');
+                }
             }
         }
 
@@ -210,10 +231,9 @@
             let lastIdx = localStorage.getItem('lastIdx'),
                 abbDate = ($('#datepicker').val() + ' ' + $('#time').val()).replace(/[^0-9]/g, '');
             let itemSource = `
-                <div date-idx="${lastIdx++}">
-                    <div>
-                        ${$('#itemName').val()}
-                    </div>
+                <div date-idx="${++lastIdx}" class="col-md-5 item_box">
+                    <span class="close">&times;</span>
+                    <div><h4>${$('#itemName').val()}</h4></div>
                     <div>
                         만료기간 :
                         <span class="availableDate">
@@ -225,7 +245,6 @@
                         <span class="remaindDate">
                         </span>
                     </div>
-                    <button type="button" class="btn_delete">X</button>
                 </div>
                 `
 
@@ -271,8 +290,8 @@
         });
 
         // 아이템 리스트 목록 삭제
-        $(document).on('click', '.btn_delete', function () {
-            let idx = $($(this).parents()[0]).data("idx");
+        $(document).on('click', '.close', function () {
+            let idx = $(this).parent().data('idx');
             let getJSON = JSON.parse(localStorage.getItem('item')),
                 lastIdx = localStorage.getItem('lastIdx');
 
@@ -280,8 +299,8 @@
             localStorage.setItem('item', JSON.stringify(getJSON));
             localStorage.setItem('lastIdx', --lastIdx);
 
-            $(this).parents('div')[0].remove();
-        });
+            $(this).parent().remove();
+        })
 
         // includeHTML
         $('header').load('/meplication/include/header.html');
