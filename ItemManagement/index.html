@@ -227,7 +227,7 @@
             let rds = Math.random().toString(36).substr(2, 11);
 
             for (let i in getJSON) {
-                if (i == rds) randomStr(getJSON);
+                if (i == rds) rds = randomStr(getJSON);
             }
 
             return rds;
